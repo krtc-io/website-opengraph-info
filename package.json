@@ -1,0 +1,65 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "website-og",
+  "author": "Roman Nguyen",
+  "module": "dist/website-og.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/website-og.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/website-og.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/lodash.merge": "^4.6.7",
+    "husky": "^8.0.1",
+    "size-limit": "^7.0.8",
+    "ts-node": "^10.8.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@types/node-fetch": "2",
+    "cheerio": "^1.0.0-rc.12",
+    "lodash.merge": "^4.6.2",
+    "node-abort-controller": "^3.0.1",
+    "node-fetch": "2"
+  }
+}
