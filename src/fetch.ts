@@ -1,6 +1,6 @@
-import fetch, { RequestInfo, RequestInit } from 'node-fetch';
-import { AbortController } from 'node-abort-controller';
-import merge from 'lodash.merge';
+import fetch, { RequestInfo, RequestInit } from "node-fetch";
+import { AbortController } from "node-abort-controller";
+import merge from "lodash.merge";
 
 export const fetchWebsiteHtml = async (
   url: RequestInfo,
@@ -18,10 +18,10 @@ export const fetchWebsiteHtml = async (
     {
       signal: controller.signal,
       headers: {
-        accept: 'text/html',
-        'user-agent':
-          'Slackbot-LinkExpanding 1.0 (+https://api.slack.com/robots)',
-        'content-type': 'text/html',
+        accept: "text/html",
+        "user-agent":
+          "Slackbot-LinkExpanding 1.0 (+https://api.slack.com/robots)",
+        "content-type": "text/html",
       },
     },
     init
@@ -31,7 +31,7 @@ export const fetchWebsiteHtml = async (
     .then(res => {
       if (res.status >= 300) {
         return Promise.reject({
-          message: 'Page loading error',
+          message: "Page loading error",
           status: res.status,
         });
       }

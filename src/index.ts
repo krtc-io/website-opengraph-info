@@ -1,13 +1,13 @@
-import { configFavicons } from './configs/favicon';
-import { findElementsByConfig } from './findElementsByConfig';
-import { fetchWebsiteHtml } from './fetch';
-import { load } from 'cheerio';
-import { configTitles } from './configs/title';
-import { configDescriptions } from './configs/description';
-import { configImages } from './configs/image';
+import { configFavicons } from "./configs/favicon";
+import { findElementsByConfig } from "./findElementsByConfig";
+import { fetchWebsiteHtml } from "./fetch";
+import { load } from "cheerio";
+import { configTitles } from "./configs/title";
+import { configDescriptions } from "./configs/description";
+import { configImages } from "./configs/image";
 
 export const websiteOpenGraph = async (url: string) => {
-  console.log('URL', url);
+  console.log("URL", url);
   return fetchWebsiteHtml(url).then(text => {
     const dom = load(text);
     const results = {
@@ -40,8 +40,8 @@ export const websiteOpenGraph = async (url: string) => {
       return res;
     }, initRes);
 
-    console.log('full', results);
-    console.log('result', result);
+    console.log("full", results);
+    console.log("result", result);
 
     return result;
   });

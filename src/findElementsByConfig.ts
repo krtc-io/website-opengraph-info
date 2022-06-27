@@ -1,14 +1,14 @@
-import type { CheerioAPI } from "cheerio";
-import type { DOMSelectConfig } from "./types";
+import { CheerioAPI } from "cheerio";
+import { DOMSelectConfig } from "./types";
 
 export const findElementsByConfig = (
   dom: CheerioAPI,
   configs: DOMSelectConfig[]
 ) => {
-  const res: { value: string; description: string, priority: number }[] = [];
+  const res: { value: string; description: string; priority: number }[] = [];
 
-  configs.forEach((config) => {
-    Array.from(dom(config.selector)).forEach((el) => {
+  configs.forEach(config => {
+    Array.from(dom(config.selector)).forEach(el => {
       if ("attribs" in el) {
         const value =
           config.valueAttribute === "INNER_HTML"
@@ -20,7 +20,7 @@ export const findElementsByConfig = (
           res.push({
             value,
             description: config.description,
-            priority: config.priority
+            priority: config.priority,
           });
         }
       }
