@@ -1,10 +1,10 @@
 import fetch, { RequestInfo, RequestInit } from "node-fetch";
 import { AbortController } from "node-abort-controller";
-import merge from "lodash.merge";
+import deepMerge from "deepmerge";
 
 export const fetchWebsiteHtml = async (
   url: RequestInfo,
-  init?: RequestInit,
+  init: RequestInit = {},
   options?: { timeout?: number }
 ) => {
   const timeoutMs = options?.timeout ?? 5000;
@@ -14,7 +14,7 @@ export const fetchWebsiteHtml = async (
     controller.abort();
   }, timeoutMs);
 
-  const mergedInit = merge(
+  const mergedInit = deepMerge(
     {
       signal: controller.signal,
       headers: {

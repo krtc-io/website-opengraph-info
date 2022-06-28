@@ -47,7 +47,6 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
-    "@types/lodash.merge": "^4.6.7",
     "husky": "^8.0.1",
     "size-limit": "^7.0.8",
     "ts-node": "^10.8.1",
@@ -58,7 +57,7 @@
   "dependencies": {
     "@types/node-fetch": "2",
     "cheerio": "^1.0.0-rc.12",
-    "lodash.merge": "^4.6.2",
+    "deepmerge": "^4.2.2",
     "node-abort-controller": "^3.0.1",
     "node-fetch": "2"
   }
