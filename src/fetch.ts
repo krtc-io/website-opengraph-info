@@ -1,6 +1,5 @@
 import fetch, { RequestInfo, RequestInit } from "node-fetch";
 import { AbortController } from "node-abort-controller";
-import deepMerge from "deepmerge";
 
 export const fetchWebsiteHtml = async (
   url: RequestInfo,
@@ -14,18 +13,17 @@ export const fetchWebsiteHtml = async (
     controller.abort();
   }, timeoutMs);
 
-  const mergedInit = deepMerge(
-    {
-      signal: controller.signal,
-      headers: {
-        accept: "text/html",
-        "user-agent":
-          "Slackbot-LinkExpanding 1.0 (+https://api.slack.com/robots)",
-        "content-type": "text/html",
-      },
+  const mergedInit = {
+    ...init,
+    signal: controller.signal,
+    headers: {
+      accept: "text/html",
+      "user-agent":
+        "Slackbot-LinkExpanding 1.0 (+https://api.slack.com/robots)",
+      "content-type": "text/html",
+      ...init?.headers,
     },
-    init
-  );
+  };
 
   return fetch(url, mergedInit)
     .then(res => {
