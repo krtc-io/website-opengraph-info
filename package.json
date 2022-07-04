@@ -37,14 +37,14 @@
     "trailingComma": "es5"
   },
   "author": "Roman Nguyen",
-  "module": "dist/website-og.esm.js",
+  "module": "dist/website-opengraph-info.esm.js",
   "size-limit": [
     {
-      "path": "dist/website-og.cjs.production.min.js",
+      "path": "dist/website-opengraph-info.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/website-og.esm.js",
+      "path": "dist/website-opengraph-info.esm.js",
       "limit": "10 KB"
     }
   ],
