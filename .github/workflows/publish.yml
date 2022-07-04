@@ -5,8 +5,8 @@ name: Node.js Package
 
 on:
   push:
-    tags:
-      - "*"
+    branches:
+      - "main"
 
 jobs:
   build:
@@ -16,7 +16,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - run: npm install
+      - run: yarn
+      - run: yarn build
 
   publish-gpr:
     needs: build
@@ -28,5 +29,4 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
           scope: "@krtcio"
-      - run: npm ci
-      - run: npm publish
+      - run: yarn publish
