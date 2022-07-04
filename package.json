@@ -1,6 +1,10 @@
 {
   "version": "0.1.0",
   "license": "MIT",
+  "name": "@krtc-io/website-opengraph-info",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "type": "module",
@@ -32,7 +36,6 @@
     "singleQuote": false,
     "trailingComma": "es5"
   },
-  "name": "website-og",
   "author": "Roman Nguyen",
   "module": "dist/website-og.esm.js",
   "size-limit": [
