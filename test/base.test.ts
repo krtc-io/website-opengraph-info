@@ -3,16 +3,25 @@ import { websiteOpenGraph } from "../src";
 describe("blah", () => {
   it("twitter", async () => {
     // expect(await websiteOpenGraph('https://talkbase.io')).toEqual(2);
-    expect(
-      await websiteOpenGraph(
-        "https://twitter.com/RoshanBliss/status/1540525520118599681"
-      )
-    ).toHaveProperty("title");
+    const result = await websiteOpenGraph(
+      "https://twitter.com/RoshanBliss/status/1540525520118599681"
+    );
+    expect(result).toHaveProperty("data");
   });
-  it("instagram", async () => {
+  it("pulumi", async () => {
     // expect(await websiteOpenGraph('https://talkbase.io')).toEqual(2);
+    const result = await websiteOpenGraph("https://app.pulumi.com");
+    expect(result).toHaveProperty("data");
+    expect(result.data).toHaveProperty("favicon");
     expect(
-      await websiteOpenGraph("https://www.instagram.com/p/CfRjvX6spN7/?hl=en")
-    ).toHaveProperty("title");
+      result.data.favicon === "https://app.pulumi.com/favicon.ico"
+    ).toBeTruthy();
+  });
+  it("talkbase", async () => {
+    // expect(await websiteOpenGraph('https://talkbase.io')).toEqual(2);
+    const result = await websiteOpenGraph("https://talkbase.io");
+    expect(result).toHaveProperty("data");
+    expect(result.data).toHaveProperty("title");
+    expect(typeof result.data.title === "string").toBeTruthy();
   });
 });

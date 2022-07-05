@@ -1,10 +1,12 @@
 import fetch, { RequestInfo, RequestInit } from "node-fetch";
 import { AbortController } from "node-abort-controller";
 
+export type FetchWebsiteOptions = { timeout?: number };
+
 export const fetchWebsiteHtml = async (
   url: RequestInfo,
   init: RequestInit = {},
-  options?: { timeout?: number }
+  options?: FetchWebsiteOptions
 ) => {
   const timeoutMs = options?.timeout ?? 5000;
 

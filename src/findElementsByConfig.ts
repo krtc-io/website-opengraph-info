@@ -3,9 +3,18 @@ import { DOMSelectConfig } from "./types";
 
 export const findElementsByConfig = (
   dom: CheerioAPI,
-  configs: DOMSelectConfig[]
+  configs: DOMSelectConfig[],
+  options?: {
+    valueTransformer?: (value: string) => string | null;
+  }
 ) => {
-  const res: { value: string; description: string; priority: number }[] = [];
+  const res: {
+    value: string | null;
+    description: string;
+    priority: number;
+  }[] = [];
+
+  const valueTransformer = options?.valueTransformer || undefined;
 
   configs.forEach(config => {
     Array.from(dom(config.selector)).forEach(el => {
@@ -16,9 +25,10 @@ export const findElementsByConfig = (
               ? el.children[0].data
               : null
             : el.attribs[config.valueAttribute];
+
         if (value) {
           res.push({
-            value,
+            value: valueTransformer ? valueTransformer(value) : value,
             description: config.description,
             priority: config.priority,
           });
